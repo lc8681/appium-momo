@@ -17,3 +17,9 @@ desired_caps['platformVersion'] = '5.1'
 desired_caps['appPackage'] = 'com.immomo.momo'  #被测App的包名
 desired_caps['appActivity'] = 'com.immomo.momo.android.activity.WelcomeActivity' #启动时的Activity
 wd = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
+
+wd.find_element_by_id("maintab_layout_profile").click()   #点击个人帧
+wd.find_element_by_id("visitor_btn_login").click()    #点击登录按钮
+wd.find_element_by_id("login_et_momoid").send_keys("219530396")   #输入用户名
+wd.find_element_by_id("login_et_pwd").send_keys("momo1234")     #输入密码
+wd.find_element_by_id("btn_ok").click()
