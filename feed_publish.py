@@ -22,12 +22,23 @@ desired_caps['appActivity'] = 'com.immomo.momo.android.activity.WelcomeActivity'
 wd = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
 wd.implicitly_wait(10)   # 等待元素10s
 sleep(5)
-
+"""
 wd.find_element_by_id("maintab_layout_profile").click()   # 点击个人帧
 wd.find_element_by_id("visitor_btn_login").click()    # 点击登录按钮
 wd.find_element_by_id("login_et_momoid").clear()
 wd.find_element_by_id("login_et_momoid").send_keys("219530396")   # 输入用户名
 wd.find_element_by_id("login_et_pwd").send_keys("momo1234")     # 输入密码
 wd.find_element_by_id("btn_ok").click()    # 确定登录
+"""
+# <------------- 以 下 为 登 录 后 ------------->
+wd.swipe(start_x=190, start_y=1550, end_x=1000, end_y=1550, duration=None)  # 往左滑动进入动态
+wd.find_element_by_id("feedlist_menu_publish").click()  # 点击发布动态按钮
+wd.find_element_by_id("signeditor_tv_text").send_keys("test")
+wd.find_element_by_id("layout_add_more").click()
+wd.find_element_by_id("layout_add_music").click()
+wd.find_element_by_id("layout_add_emotion").click()
+wd.swipe(start_x=157, start_y=1240, end_x=157, end_y=1240, duration=2)
+
+
 
 wd.quit()
