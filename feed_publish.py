@@ -36,19 +36,7 @@ wd.find_element_by_id("feedlist_menu_publish").click()  # 点击发布动态按�
 wd.find_element_by_id("signeditor_tv_text").send_keys("test")
 wd.find_element_by_id("layout_add_more").click()
 wd.find_element_by_id("layout_add_emotion").click()
-wd.find_element_by_xpath("//android.widget.LinearLayout[1]"
-                         "/android.widget.FrameLayout[1]"
-                         "/android.widget.LinearLayout[1]"
-                         "/android.widget.FrameLayout[1]"
-                         "/android.widget.RelativeLayout[1]"
-                         "/android.widget.RelativeLayout[1]"
-                         "/android.widget.RelativeLayout[1]"
-                         "/android.widget.FrameLayout[1]"
-                         "/android.widget.LinearLayout[1]"
-                         "/android.widget.FrameLayout[1]"
-                         "/android.widget.GridView[1]"
-                         "/android.widget.LinearLayout[1]"
-                         "/android.widget.ImageView[1]").click()
+wd.swipe(start_x=157, start_y=1240, end_x=157, end_y=1240, duration=None)
 
 
 
