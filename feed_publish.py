@@ -18,7 +18,7 @@ desired_caps['deviceName'] = '860BCML225ZG'  # adb devices查到的设备名
 desired_caps['platformName'] = 'Android'
 desired_caps['platformVersion'] = '5.1'
 desired_caps['appPackage'] = 'com.immomo.momo'  # 被测App的包名
-desired_caps['appActivity'] = 'com.immomo.momo.android.activity.WelcomeActivity' # 启动时的Activity
+# desired_caps['appActivity'] = 'com.immomo.momo.dev.android.activity.WelcomeActivity'  # 启动时的Activity
 wd = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
 wd.implicitly_wait(10)   # 等待元素10s
 sleep(5)
@@ -35,9 +35,20 @@ wd.swipe(start_x=190, start_y=1550, end_x=1000, end_y=1550, duration=None)  # �
 wd.find_element_by_id("feedlist_menu_publish").click()  # 点击发布动态按钮
 wd.find_element_by_id("signeditor_tv_text").send_keys("test")
 wd.find_element_by_id("layout_add_more").click()
-wd.find_element_by_id("layout_add_music").click()
 wd.find_element_by_id("layout_add_emotion").click()
-wd.swipe(start_x=157, start_y=1240, end_x=157, end_y=1240, duration=2)
+wd.find_element_by_xpath("//android.widget.LinearLayout[1]"
+                         "/android.widget.FrameLayout[1]"
+                         "/android.widget.LinearLayout[1]"
+                         "/android.widget.FrameLayout[1]"
+                         "/android.widget.RelativeLayout[1]"
+                         "/android.widget.RelativeLayout[1]"
+                         "/android.widget.RelativeLayout[1]"
+                         "/android.widget.FrameLayout[1]"
+                         "/android.widget.LinearLayout[1]"
+                         "/android.widget.FrameLayout[1]"
+                         "/android.widget.GridView[1]"
+                         "/android.widget.LinearLayout[1]"
+                         "/android.widget.ImageView[1]").click()
 
 
 
