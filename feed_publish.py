@@ -52,4 +52,3 @@ wd.find_element_by_xpath("//android.widget.LinearLayout[1]"
 
 
 
-wd.quit()
