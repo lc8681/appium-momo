@@ -27,11 +27,11 @@ sleep(5)
 wd.find_element_by_id("maintab_layout_profile").click()   # 点击个人帧
 wd.find_element_by_id("visitor_btn_login").click()    # 点击登录按钮
 
-wd.find_element_by_id("login_et_momoid").clear()  # 清除用户名
+# wd.find_element_by_id("login_et_momoid").clear()  # 清除用户名
 
-username = raw_input("请输入用户名:")
+# username = raw_input("请输入用户名:")
 
-wd.find_element_by_id("login_et_momoid").send_keys(username)  # 输入用户名
+# wd.find_element_by_id("login_et_momoid").send_keys(username)  # 输入用户名
 
 password = raw_input("请输入密码:")
 
@@ -39,3 +39,8 @@ wd.find_element_by_id("login_et_pwd").send_keys(password)     # 输入密码
 wd.find_element_by_id("btn_ok").click()    # 确定登录
 
 
+try:
+    wd.find_element_by_id("alertTitle").is_displayed()
+    print("用户名或密码错误,请重试")
+except:
+    print("登录成功")
