@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 # python学习，加油！
+
 import sys
 from sys import argv
 import os
@@ -24,31 +25,16 @@ wd = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
 wd.implicitly_wait(10)   # 等待元素10s
 sleep(5)
 
-wd.find_element_by_id("maintab_layout_profile").click()   # 点击个人帧
-wd.find_element_by_id("visitor_btn_login").click()    # 点击登录按钮
-
-# <----------清除文本框的内容------------>
-def username_clear(text):
-   wd.keyevent(123)
-   for i in range(0, len(text)):
-       wd.keyevent(67)
-
-adr = wd.find_element_by_id("login_et_momoid")
-adr.click()
-context2 = adr.get_attribute('text')
-username_clear(context2)
-# <------------------------------------>
-
-username = raw_input("请输入用户名:")
-wd.find_element_by_id("login_et_momoid").send_keys(username)  # 输入用户名
-
-password = raw_input("请输入密码:")
-wd.find_element_by_id("login_et_pwd").send_keys(password)     # 输入密码
-wd.find_element_by_id("btn_ok").click()    # 确定登录
-
-
-try:
-    wd.find_element_by_id("alertTitle").is_displayed()
-    print("用户名或密码错误,请重试")
-except:
-    print("登录成功")
+wd.find_element_by_id("maintab_layout_profile").click()
+wd.swipe(start_x=534, start_y=1534, end_x=534, end_y=415, duration=None)
+wd.find_element_by_xpath("//android.widget.LinearLayout[1]"
+                         "/android.widget.FrameLayout[1]"
+                         "/android.widget.LinearLayout[1]"
+                         "/android.widget.FrameLayout[1]"
+                         "/android.widget.RelativeLayout[1]"
+                         "/android.widget.FrameLayout[1]"
+                         "/android.widget.RelativeLayout[1]"
+                         "/android.widget.LinearLayout[1]"
+                         "/android.widget.ExpandableListView[1]"
+                         "/android.widget.LinearLayout[12]"
+                         "/android.widget.LinearLayout[1]").click()
