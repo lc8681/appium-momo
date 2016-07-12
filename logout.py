@@ -11,7 +11,6 @@ from selenium.webdriver.support import expected_conditions as EC
 from appium import webdriver
 from time import sleep
 
-
 PATH = lambda p: os.path.abspath(
     os.path.join(os.path.dirname(__file__), p)
 )
@@ -27,14 +26,7 @@ sleep(5)
 
 wd.find_element_by_id("maintab_layout_profile").click()
 wd.swipe(start_x=534, start_y=1534, end_x=534, end_y=415, duration=None)
-wd.find_element_by_xpath("//android.widget.LinearLayout[1]"
-                         "/android.widget.FrameLayout[1]"
-                         "/android.widget.LinearLayout[1]"
-                         "/android.widget.FrameLayout[1]"
-                         "/android.widget.RelativeLayout[1]"
-                         "/android.widget.FrameLayout[1]"
-                         "/android.widget.RelativeLayout[1]"
-                         "/android.widget.LinearLayout[1]"
-                         "/android.widget.ExpandableListView[1]"
-                         "/android.widget.LinearLayout[12]"
-                         "/android.widget.LinearLayout[1]").click()
+profile_data = wd.find_elements_by_class_name("android.widget.TextView")
+print profile_data
+
+exit()
