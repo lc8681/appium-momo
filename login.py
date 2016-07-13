@@ -46,9 +46,12 @@ password = raw_input("请输入密码:")
 wd.find_element_by_id("login_et_pwd").send_keys(password)     # 输入密码
 wd.find_element_by_id("btn_ok").click()    # 确定登录
 
-
+sleep(3)
 try:
     wd.find_element_by_id("alertTitle").is_displayed()
     print("用户名或密码错误,请重试")
 except:
     print("登录成功")
+
+sleep(10)
+wd.quit()
