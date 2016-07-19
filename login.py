@@ -26,7 +26,7 @@ while login_again:
         android_caps.wd.find_element_by_id("login_et_pwd").click()
         sleep(1)
         android_caps.wd.press_keycode(67)    # 删除键(方法太TM的笨了..但是又想不到新方法,因为密码框没有text属性,所以不能和用户名一样处理)
-        android_caps.wd.press_keycode(67)
+        android_caps.wd.press_keycode(67)    # 67是keycode键值的回退删除
         android_caps.wd.press_keycode(67)
         android_caps.wd.press_keycode(67)
         android_caps.wd.press_keycode(67)
@@ -40,7 +40,7 @@ while login_again:
         password = raw_input("请输入密码:")
         android_caps.wd.find_element_by_id("login_et_pwd").send_keys(password)     # 输入密码
         android_caps.wd.find_element_by_id("btn_ok").click()   # 确定登录
-        sleep(8)
+        sleep(5)
         try:
             android_caps.wd.find_element_by_id("nearby_match_like").is_displayed()
             login_again = False
