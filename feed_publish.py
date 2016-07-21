@@ -59,11 +59,11 @@ try:
     android_caps.wd.find_element_by_android_uiautomator('new UiSelector().text("1分钟前")')
     print "发布成功,发布动态流程结束"
     sleep(20)
-    quit()
+    android_caps.wd.quit()
 except:
     print "发布失败"
     sleep(20)
-    quit()
+    android_caps.wd.quit()
 
 
 

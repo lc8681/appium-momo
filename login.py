@@ -2,7 +2,7 @@
 # python学习，加油！
 import android_caps
 from time import sleep
-
+sleep(5)
 android_caps.wd.find_element_by_id("maintab_layout_profile").click()   # 点击个人帧
 sleep(1)
 android_caps.wd.find_element_by_id("visitor_btn_login").click()    # 点击登录按钮
