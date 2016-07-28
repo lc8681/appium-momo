@@ -53,7 +53,7 @@ else:
         print("地点显示正常!!")
     except:
             print("没有拿到地点!!")
-android_caps.wd.tap([(995, 166), (995, 166)], None)
+android_caps.wd.find_element_by_android_uiautomator('new UiSelector().text("发布")').click()
 sleep(10)
 try:
     android_caps.wd.find_element_by_android_uiautomator('new UiSelector().text("1分钟前")')
