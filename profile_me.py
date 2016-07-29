@@ -11,6 +11,7 @@ sys.setdefaultencoding('utf-8')
 sleep(5)
 android_caps.wd.find_element_by_id("maintab_layout_profile").click()
 print "昵称:"+android_caps.wd.find_element_by_id("myinfo_header_name").text
+print "个性签名:"+android_caps.wd.find_element_by_id("myinfo_header_desc").text
 android_caps.wd.find_element_by_id("myinfo_header_avatar").click()
 # <=====输出个人profile页面信息=====>
 try:
@@ -31,4 +32,4 @@ elif members == "旗舰会员":
     print "会员等级:"+android_caps.wd.find_element_by_id("profile_account_vip_desc").text
 else:
     print "会员等级:非会员"
-
+android_caps.wd.swipe(start_x=513, start_y=1830, end_x=513, end_y=800, duration=None)  # 向下滑动
