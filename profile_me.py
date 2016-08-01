@@ -33,4 +33,10 @@ elif members == "旗舰会员":
 else:
     print "会员等级:非会员"
 android_caps.wd.swipe(start_x=513, start_y=1830, end_x=513, end_y=800, duration=None)
-android_caps.wd.swipe(start_x=513, start_y=1830, end_x=513, end_y=800, duration=None)  # 向下滑动
+android_caps.wd.swipe(start_x=513, start_y=1830, end_x=513, end_y=200, duration=None)  # 向下滑动
+try:
+    android_caps.wd.find_element_by_id("txt_join_group_count").is_displayed()
+    print android_caps.wd.find_element_by_id("txt_join_group_count").text
+
+except:
+    print("没有加入群组或者群组加载失败")
