@@ -7,7 +7,7 @@ PATH = lambda p: os.path.abspath(
     os.path.join(os.path.dirname(__file__), p)
 )
 
-desired_caps = []
+desired_caps = {}
 desired_caps['deviceName'] = '850ABM3SRGJF'  # adb devices查到的设备名
 desired_caps['platformName'] = 'Android'
 desired_caps['platformVersion'] = '5.1'

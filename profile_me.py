@@ -32,4 +32,5 @@ elif members == "旗舰会员":
     print "会员等级:"+android_caps.wd.find_element_by_id("profile_account_vip_desc").text
 else:
     print "会员等级:非会员"
+android_caps.wd.swipe(start_x=513, start_y=1830, end_x=513, end_y=800, duration=None)
 android_caps.wd.swipe(start_x=513, start_y=1830, end_x=513, end_y=800, duration=None)  # 向下滑动
