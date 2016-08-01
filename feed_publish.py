@@ -3,7 +3,6 @@
 import android_caps
 from time import sleep
 from random import choice
-import login
 # <-------以下判断是否登录,如果登录直接发布动态;如果未登录调用login.py进行登录操作后再走发布动态流程------->
 log_in = True
 while log_in:

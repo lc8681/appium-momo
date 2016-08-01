@@ -106,7 +106,7 @@ try:
     print("图片已送达")
 except:
     print("图片送达失败")
-android_caps.wd.find_element_by_id("message_iv_msgimage").click()
+    android_caps.wd.find_element_by_id("message_iv_msgimage").click()
 try:
     android_caps.wd.find_element_by_android_uiautomator('new UiSelector().text("下载失败")').is_displayed()
     print("图片加载失败")
