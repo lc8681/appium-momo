@@ -8,7 +8,7 @@ PATH = lambda p: os.path.abspath(
 )
 
 desired_caps = {}
-desired_caps['deviceName'] = '860BCML225ZG'  # adb devices查到的设备名
+desired_caps['deviceName'] = '850ABM3SRGJF'  # adb devices查到的设备名
 desired_caps['platformName'] = 'Android'
 desired_caps['platformVersion'] = '5.1'
 desired_caps['appPackage'] = 'com.immomo.momo'  # 被测App的包名
