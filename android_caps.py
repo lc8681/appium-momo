@@ -17,4 +17,4 @@ desired_caps['appActivity'] = 'com.immomo.momo.android.activity.WelcomeActivity'
 desired_caps['resetKeyboard'] = True
 wd = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
 
-wd.implicitly_wait(5)   # 等待元素5s
+wd.implicitly_wait(3)   # 等待元素5s
