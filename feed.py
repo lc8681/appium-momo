@@ -16,6 +16,26 @@ sleep(5)  # 等待feed刷新完毕
 print "附近地点"+android_caps.wd.find_element_by_id("site_name").text+\
       "("+android_caps.wd.find_element_by_id("site_type_title").text+")"
 print android_caps.wd.find_element_by_id("site_desc").text
+print "<====切换商圈操作====>"
+android_caps.wd.find_element_by_id("switch_site_button").click()
+site_names = android_caps.wd.find_elements_by_id("site_name")
+name_list = []
+for site_name in site_names:
+    if site_name.get_attribute('resourceId') == 'com.immomo.momo:id/site_name':
+        name_list.append(site_name)
+choice_site = choice(name_list)
+d_site_name = choice_site.text
+choice_site.click()
+pio_site = android_caps.wd.find_element_by_id("site_name").text
+android_caps.wd.press_keycode(4)
+if pio_site == d_site_name:
+    print "切换商圈操作成功"
+else:
+    print "切换商圈操作失败!"
+
+sleep(3)
+print "当前商圈: "+android_caps.wd.find_element_by_id("site_name").text+\
+      "("+android_caps.wd.find_element_by_id("site_type_title").text+")"
 android_caps.wd.swipe(start_x=527, start_y=1700, end_x=527, end_y=1480, duration=None)
 
 #  <======判断是否有地点,如果有则向上滑动,再进行其他case
@@ -178,20 +198,27 @@ for i in range(5):
         except:
             age = android_caps.wd.find_element_by_id("badge_tv_age").text
             distance = android_caps.wd.find_element_by_id("layout_feed_distance").text
-            list_dis.append(float(distance[:-2]))       # 不要后两位的浮点类型
             android_caps.wd.swipe(start_x=508, start_y=1650, end_x=508, end_y=800, duration=None)
-            if len(set_age) == 2:
-                try:
-                    int(age) == int(set_age)
-                except:
-                    print "年龄:"+age+"  错误(x)"+"设置的年龄为:"+set_age
-                    sleep(10)
-                    android_caps.wd.quit()
-            else:
-                if int(age) < int(set_age[1:2]) or int(age) > int(set_age[-3:-1]):
-                    print "年龄:"+age+"  错误(x)"+"设置的年龄为:"+set_age
-                    sleep(10)
-                    android_caps.wd.quit()
+
+            try:
+                android_caps.wd.find_element_by_id("lba_feed_btn_close").is_displayed()
+                android_caps.wd.find_element_by_id("lba_feed_btn_close").click()
+                android_caps.wd.find_element_by_android_uiautomator('new UiSelector().text("不感兴趣")').click()
+            except:
+                list_dis.append(float(distance[:-2]))       # 不要后两位的浮点类型
+
+                if len(set_age) == 2:
+                    try:
+                        int(age) == int(set_age)
+                    except:
+                        print "年龄:"+age+"  错误(x)"+"设置的年龄为:"+set_age
+                        sleep(10)
+                        android_caps.wd.quit()
+                else:
+                    if int(age) < int(set_age[1:2]) or int(age) > int(set_age[-3:-1]):
+                        print "年龄:"+age+"  错误(x)"+"设置的年龄为:"+set_age
+                        sleep(10)
+                        android_caps.wd.quit()
 print "年龄都在范围内"
 dis_a = sorted(list_dis)
 print "扫描到的距离: "
