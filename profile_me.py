@@ -28,21 +28,6 @@ try:
 except:
     print "没有找到婚姻状态"
 print "距离&最后登录时间:"+android_caps.wd.find_element_by_id("profile_tv_distance_time").text
-print android_caps.wd.find_element_by_id("txt_join_feed_count").text
-android_caps.wd.find_element_by_id("txt_join_feed_count").click()
-sleep(5)
-print "浏览次数:"+android_caps.wd.find_element_by_id("tv_feed_view_count").text
-try:
-    android_caps.wd.find_element_by_accessibility_id("发布").is_displayed()
-    print "有发布按钮"
-except:
-    print "没有发布按钮!"
-try:
-    android_caps.wd.find_element_by_id("tv_user_name").is_displayed()
-    print "个人动态跳转正确"
-except:
-    print "个人动态跳转错误!"
-android_caps.wd.press_keycode(4)
 print "帐号等级:"+android_caps.wd.find_element_by_id("profile_account_grade_title").text
 android_caps.wd.find_element_by_id("profile_account_grow_layout").click()
 try:
@@ -85,6 +70,14 @@ android_caps.wd.swipe(start_x=513, start_y=1830, end_x=513, end_y=200, duration=
 try:
     android_caps.wd.find_element_by_id("txt_join_group_count").is_displayed()
     print android_caps.wd.find_element_by_id("txt_join_group_count").text
+    group = []
+    group_names = android_caps.wd.find_elements_by_id("tv_groupname")
+    decs = android_caps.wd.find_elements_by_id("tv_groupdec")
+    for group_name in group_names:
+        if group_name.get_attribute('resourceId') == 'com.immomo.momo:id/tv_groupname':
+            group.append(group_name.text)
+    for i in group:
+        print i
 except:
     print "没有找到群组信息"
 

@@ -5,6 +5,7 @@ from time import sleep
 from random import choice
 import random
 import sys
+import find_toast
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
@@ -93,9 +94,17 @@ except:
         print "点赞成功"
     else:
         print "点赞失败"
-
 sleep(3)
-# <=====举报=====>
+# <=====评论=====>
+# android_caps.wd.find_element_by_id("btn_feed_comment").click()
+# android_caps.wd.find_element_by_id("iv_feed_emote").click()
+# android_caps.wd.find_element_by_android_uiautomator\
+#                 ('new UiSelector().resourceId("com.immomo.momo:id/imageview").index(2)').click()
+# android_caps.wd.find_element_by_android_uiautomator\
+#                 ('new UiSelector().className("android.widget.LinearLayout").index(0)').click()
+# if find_toast.find_toast("评论成功") == True:
+#
+# # <=====举报=====>
 android_caps.wd.find_element_by_id("btn_feed_more").click()
 android_caps.wd.find_element_by_android_uiautomator('new UiSelector().text("举报")').click()
 sleep(10)

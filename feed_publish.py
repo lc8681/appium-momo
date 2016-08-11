@@ -3,14 +3,13 @@
 import android_caps
 from time import sleep
 from random import choice
-import login
 # <-------以下判断是否登录,如果登录直接发布动态;如果未登录调用login.py进行登录操作后再走发布动态流程------->
 log_in = True
 while log_in:
     try:
         android_caps.wd.find_element_by_id("visitor_fast_register").is_displayed()  # 根据访客模式下的"快速注册"判断是否登录
         print ("正在执行登录流程....")
-        login  # 调用登录模块
+        # login  # 调用登录模块
         sleep(5)
     except:
         print ("已登录")
