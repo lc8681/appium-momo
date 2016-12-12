@@ -7,81 +7,120 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 from random import choice
 import random
-sleep(5)
-android_caps.wd.find_element_by_id("maintab_layout_profile").click()
-android_caps.wd.find_element_by_id("quanzi_layout").click()
-sleep(5)
-'''
+# print "<-------------登录流程begin---------------->"
+# sleep(5)
+# try:  # 判断是否处于登录状态,如果登录则直接进入圈子,如果未登录执行登录流程
+#     android_caps.wd.find_element_by_id("visitor_fast_register").is_displayed()
+#     print "$ 帐号未登录,执行登录流程..."
+#     android_caps.wd.find_element_by_id("maintab_layout_profile").click()   # 点击个人帧
+#     sleep(2)
+#     android_caps.wd.find_element_by_id("visitor_btn_login").click()    # 点击登录按钮
+#     sleep(2)
+#     def username_clear(text):
+#         android_caps.wd.keyevent(123)
+#         for i in range(0, len(text)):
+#             android_caps.wd.keyevent(67)
+#     adr = android_caps.wd.find_element_by_id("login_et_momoid")
+#     adr.click()
+#     context2 = adr.get_attribute('text')
+#     username_clear(context2)
+#
+#     android_caps.wd.find_element_by_id("login_et_momoid").send_keys("219530396")  # 输入用户名
+#     android_caps.wd.find_element_by_id("login_et_pwd").click()
+#     sleep(1)
+#     android_caps.wd.find_element_by_id("login_et_pwd").send_keys("momo1234")     # 输入密码
+#     android_caps.wd.find_element_by_id("btn_ok").click()   # 确定登录
+#     sleep(10)
+#     try:
+#         android_caps.wd.find_element_by_id("maintab_layout_nearby").is_displayed()
+#         print "$ 帐号登录成功..."
+#     except:
+#         print "$ 账号登录失败"
+#
+# except:
+#     print "帐号已登录,执行圈子流程..."
+
+print "<-------------登录流程end,进入圈子begin---------------->"
+android_caps.wd.find_element_by_id("maintab_layout_profile").click()   # 点击个人帧
+android_caps.wd.find_element_by_id("quanzi_layout").click()   # 点击圈子入口
+sleep(30)
+print "<-------------进入圈子end,创建圈子begin---------------->"
+android_caps.wd.find_element_by_id("group_btn_layout").click()
+sleep(30)
+android_caps.wd.find_element_by_android_uiautomator('new UiSelector().className("android.view.View").index(3)').click()
+android_caps.wd.find_element_by_class_name("android.widget.EditText").send_keys("AutoQA")
+sleep(3)
+android_caps.wd.find_element_by_accessibility_id("下一步").click()
+sleep(3)
+android_caps.wd.find_element_by_accessibility_id("添加头像").click()
+android_caps.wd.find_element_by_android_uiautomator('new UiSelector().text("本地相册")').click()
+android_caps.wd.find_element_by_android_uiautomator('new UiSelector()'
+                                                    '.className("android.widget.RelativeLayout").index(1)').click()
+sleep(3)
+android_caps.wd.find_element_by_id("imagefactory_btn2").click()
+sleep(3)
+android_caps.wd.find_element_by_id("imagefactory_btn2").click()
+sleep(3)
+android_caps.wd.find_element_by_accessibility_id("选择圈子分类 ").click()
+android_caps.wd.find_element_by_accessibility_id("情感交流 ").click()
+sleep(1)
+android_caps.wd.find_element_by_accessibility_id("下一步").click()
+android_caps.wd.find_element_by_class_name("android.widget.EditText").send_keys("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+android_caps.wd.find_element_by_accessibility_id("完成").click()
+sleep(15)
 try:
-    android_caps.wd.find_element_by_accessibility_id("进入圈子").is_displayed()
-    print("显示圈子升级弹窗.")
+    android_caps.wd.find_element_by_accessibility_id("圈子创建成功").is_displayed()
+    print "$ 圈子创建成功!"
     android_caps.wd.find_element_by_accessibility_id("进入圈子").click()
 except:
-    print("没有显示圈子升级弹窗.")
-'''
-android_caps.wd.find_element_by_class_name("android.widget.EditText").click()
-android_caps.wd.find_element_by_class_name("android.widget.EditText").send_keys("mmqa")
-try:
-    android_caps.wd.find_element_by_accessibility_id("已加入").is_displayed()
-    print("已经加入此圈子")
-    android_caps.wd.find_element_by_accessibility_id("已加入").click()
-except:
-    print("没有加入此圈子,自动加入.")
-    android_caps.wd.find_element_by_accessibility_id("加入").click()
-    android_caps.wd.find_element_by_accessibility_id("已加入").click()
+    print "$ 圈子创建失败!!!"
 
-# <=====发布帖子流程=====>
-android_caps.wd.find_element_by_accessibility_id(" 发布帖子").click()
+print "<-------------创建圈子end,发布帖子begin---------------->"
+sleep(15)
+android_caps.wd.find_element_by_android_uiautomator('new UiSelector().className("android.view.View").index(17)').click()
 sleep(3)
 android_caps.wd.find_element_by_id("tv_topic").send_keys("quanzi_test")
 android_caps.wd.find_element_by_id("signeditor_tv_text").send_keys("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
-android_caps.wd.find_element_by_id("layout_add_pic").click()
-android_caps.wd.tap([(398, 1421), (398, 421)], None)
-sleep(1)
-android_caps.wd.find_element_by_id("imagepager_check").click()
-android_caps.wd.find_element_by_id("imagepager_send").click()
-# ----删除图片---
-android_caps.wd.find_element_by_id("bean_item_remove_iv").click()
-try:
-    android_caps.wd.find_element_by_android_uiautomator('new UiSelector().text("视频")').is_displayed()
-    print("删除图片成功")
-except:
-    print("删除图片失败!")
-android_caps.wd.find_element_by_id("layout_add_pic").click()
-android_caps.wd.tap([(398, 1421), (398, 421)], None)
-sleep(1)
-android_caps.wd.find_element_by_id("imagepager_check").click()
-android_caps.wd.find_element_by_id("imagepager_send").click()
+pic = android_caps.wd.find_element_by_id("layout_add_pic")
+video = android_caps.wd.find_element_by_id("layout_add_video")
+ran = [pic, video]
+if choice(ran) == video:
+    video.click()
+    android_caps.wd.find_element_by_id("recorder_change_camera").click()
+    sleep(3)
+    android_caps.wd.find_element_by_id("record_button").click()
+    sleep(40)
+    android_caps.wd.find_element_by_android_uiautomator('new UiSelector().text("完成")').click()
+    sleep(20)
+    log_in = False
+elif choice(ran) == pic:
+    pic.click()
+    android_caps.wd.find_element_by_id("checkbox").click()
+    # android_caps.wd.tap([(398, 1421), (398, 421)], None)
+    sleep(1)
+    android_caps.wd.find_element_by_id("multpic_main_send").click()
+    sleep(2)
+    log_in = False
+
 android_caps.wd.find_element_by_id("layout_site").click()
 sleep(5)
-android_caps.wd.find_element_by_android_uiautomator\
-                ('new UiSelector().className("android.widget.LinearLayout").index(2)').click()
-sleep(5)
-poi = android_caps.wd.find_element_by_id("tv_feed_site_selected")
-
+android_caps.wd.find_element_by_id("site_name").click()
 try:
-    poi.is_displayed()
-    print "地点选择:"+poi.text
+    android_caps.wd.find_element_by_id("tv_feed_site_selected").is_displayed()
+    print "$ 发布界面地点显示正常"
 except:
-    print "没有获取到地点"
-    sleep(20)
-    android_caps.wd.quit()
+    print "$ 发布界面地点显示不正常"
 android_caps.wd.find_element_by_accessibility_id("发布").click()
-sleep(10)
-try:
-    android_caps.wd.find_element_by_accessibility_id("1分钟前").is_displayed()
-    print("发布成功.")
+sleep(5)
+try:  # 用"刚刚"来判断是否发布成功
+    android_caps.wd.find_element_by_accessibility_id("刚刚").is_displayed()
+    print "$ 发布成功"
 except:
-    print("发布失败!")
-# <======操作帖子======>
-android_caps.wd.find_element_by_accessibility_id("1分钟前").click()
-try:
-    android_caps.wd.find_element_by_accessibility_id("帖子置顶","帖子加精","隐藏帖子","禁言并删帖","举报并删帖").is_displayed()
-    print("身份:管理员.")
-except:
-    print("身份:非管理员.")
-android_caps.wd.find_element_by_accessibility_id("帖子加精").click()
-android_caps.wd.find_element_by_android_uiautomator\
-                ('new UiSelector().className("android.widget.Button").index(1)').click()
-sleep(10)
-android_caps.wd.quit()
+    try:  # 用"1分钟前"来判断是否发布成功
+        android_caps.wd.find_element_by_accessibility_id("1分钟前").is_displayed()
+        print "$ 发布成功"
+    except:
+        print "$ 发布失败"
+    print "$ 发布失败"
+
+print "<-------------发布帖子end,评论begin---------------->"
