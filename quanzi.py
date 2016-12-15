@@ -44,6 +44,7 @@ print "<-------------登录流程end,进入圈子begin---------------->"
 android_caps.wd.find_element_by_id("maintab_layout_profile").click()   # 点击个人帧
 android_caps.wd.find_element_by_id("quanzi_layout").click()   # 点击圈子入口
 sleep(30)
+
 print "<-------------进入圈子end,创建圈子begin---------------->"
 android_caps.wd.find_element_by_id("group_btn_layout").click()
 sleep(30)
@@ -92,15 +93,13 @@ if choice(ran) == video:
     sleep(40)
     android_caps.wd.find_element_by_android_uiautomator('new UiSelector().text("完成")').click()
     sleep(20)
-    log_in = False
-elif choice(ran) == pic:
+else:
+    choice(ran) == pic
     pic.click()
     android_caps.wd.find_element_by_id("checkbox").click()
-    # android_caps.wd.tap([(398, 1421), (398, 421)], None)
     sleep(1)
     android_caps.wd.find_element_by_id("multpic_main_send").click()
     sleep(2)
-    log_in = False
 
 android_caps.wd.find_element_by_id("layout_site").click()
 sleep(5)
@@ -111,7 +110,7 @@ try:
 except:
     print "$ 发布界面地点显示不正常"
 android_caps.wd.find_element_by_accessibility_id("发布").click()
-sleep(5)
+sleep(10)
 try:  # 用"刚刚"来判断是否发布成功
     android_caps.wd.find_element_by_accessibility_id("刚刚").is_displayed()
     print "$ 发布成功"
@@ -121,6 +120,84 @@ except:
         print "$ 发布成功"
     except:
         print "$ 发布失败"
-    print "$ 发布失败"
-
+sleep(3)
 print "<-------------发布帖子end,评论begin---------------->"
+android_caps.wd.find_element_by_accessibility_id("1477308133728-comment").click()
+sleep(3)
+# 图片和文字评论随机发
+comment_pic = android_caps.wd.find_element_by_id("layout_select_pic")
+comment_text = android_caps.wd.find_element_by_id("message_ed_msgeditor")
+ran = [comment_pic, comment_text]
+if choice(ran) == comment_pic:
+    comment_pic.click()
+    android_caps.wd.find_element_by_id("checkbox").click()
+    sleep(3)
+    android_caps.wd.find_element_by_id("multpic_main_send").click()
+    sleep(3)
+    print "$ 添加" + android_caps.wd.find_element_by_id("pic_number_bubble").text + "张图片"
+    android_caps.wd.find_element_by_id("message_btn_sendtext").click()
+    sleep(5)
+
+else:
+    choice(ran) == comment_text
+    comment_text.send_keys("No.1")
+    android_caps.wd.find_element_by_id("message_btn_sendtext").click()
+    sleep(2)
+android_caps.wd.swipe(start_x=534, start_y=1534, end_x=534, end_y=415, duration=None)
+try:
+    android_caps.wd.find_element_by_accessibility_id("sonny刚刚 · 2楼").is_displayed()
+    print "$ 评论成功"
+except:
+    try:
+        android_caps.wd.find_element_by_accessibility_id("sonny1分钟前 · 2楼").is_displayed()
+        print "$ 评论成功"
+    except:
+        print "$ 评论失败!"
+android_caps.wd.swipe(start_x=534, start_y=1534, end_x=534, end_y=415, duration=None)
+# 删除评论
+android_caps.wd.find_element_by_accessibility_id("more-test").click()
+android_caps.wd.find_element_by_accessibility_id("删除评论").click()
+sleep(3)
+android_caps.wd.find_element_by_accessibility_id("确定").click()
+sleep(3)
+android_caps.wd.find_element_by_accessibility_id("确定").click()
+try:
+    android_caps.wd.find_element_by_accessibility_id("more-test").is_displayed()
+    print "$ 删除评论失败!"
+except:
+    print "$ 删除评论成功"
+print "<-------------评论end,点赞begin---------------->"
+android_caps.wd.find_element_by_class_name("android.widget.ImageButton").click()
+sleep(3)
+android_caps.wd.find_element_by_accessibility_id("like").click()  # 点赞
+try:
+    android_caps.wd.find_element_by_accessibility_id("liked").is_displayed()
+    print "$ 点赞成功"
+except:
+    print "$ 点赞失败!"
+print "<-------------点赞end,分享begin---------------->"
+android_caps.wd.find_element_by_accessibility_id("1479361325382-share").click()
+try:
+    android_caps.wd.find_element_by_id("alertTitle").is_displayed()
+    print "$ 分享框正确弹出"
+    feed_share = android_caps.wd.find_element_by_android_uiautomator('new UiSelector().text("动态")')
+    group_share = android_caps.wd.find_element_by_android_uiautomator('new UiSelector().text("好友/群组")')
+    ran = [feed_share, group_share]
+    if choice(ran) == feed_share:
+        feed_share.click()
+        android_caps.wd.find_element_by_id("signeditor_tv_text").send_keys("Test")
+        android_caps.wd.find_element_by_accessibility_id("保存").click()
+        sleep(5)
+
+    elif choice(ran) == group_share:
+        group_share.click()
+        android_caps.wd.find_element_by_id("message_btn_sendtext").click()
+        android_caps.wd.find_element_by_android_uiautomator('new UiSelector().text("全部好友")').click()
+        android_caps.wd.find_element_by_android_uiautomator('new UiSelector().text("搜索")').click()
+        android_caps.wd.find_element_by_id("toolbar_search_edittext").send_keys("173489501")
+        android_caps.wd.find_element_by_id("userlist_item_tv_name").click()
+        android_caps.wd.find_element_by_id("button1").click()
+        sleep(5)
+except:
+    print "$ 没有弹出分享框!"
+android_caps.wd.quit()
