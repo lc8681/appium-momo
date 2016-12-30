@@ -388,6 +388,7 @@ android_caps.wd.find_element_by_accessibility_id("我的圈内等级孤独求败
 level = android_caps.wd.find_element_by_id("web_title_textview").text
 if level == "圈子成员等级":
     print "$ 圈子成员等级页面载入正确"
+    sleep(10)
     android_caps.wd.find_element_by_accessibility_id("称号模板").click()
     sleep(2)
     try:

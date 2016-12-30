@@ -51,7 +51,7 @@ android_caps.wd.find_element_by_id("button1").click()
 try:
     android_caps.wd.find_element_by_android_uiautomator('new UiSelector().text("选择家乡")').is_displayed()
     print("家乡添加失败!")
-    quit()
+    android_caps.wd.quit()
 except:
     print("家乡添加成功.")
 # <<<-------选择性别(随机选择)------->>>
