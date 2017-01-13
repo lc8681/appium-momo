@@ -2,7 +2,7 @@
 # python学习，加油！
 import os
 from appium import webdriver
-
+from appium.webdriver.connectiontype import ConnectionType
 PATH = lambda p: os.path.abspath(
     os.path.join(os.path.dirname(__file__), p)
 )
