@@ -2,7 +2,6 @@
 # python学习，加油！
 import os
 from appium import webdriver
-from appium.webdriver.connectiontype import ConnectionType
 PATH = lambda p: os.path.abspath(
     os.path.join(os.path.dirname(__file__), p)
 )
@@ -16,6 +15,6 @@ desired_caps['appActivity'] = 'com.immomo.momo.android.activity.WelcomeActivity'
 desired_caps['unicodeKeyboard'] = True
 desired_caps['resetKeyboard'] = True
 
-wd = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
+self = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
 
-wd.implicitly_wait(3)   # 等待元素5s
+self.implicitly_wait(3)   # 等待元素5s

@@ -11,7 +11,7 @@ from selenium.webdriver.support import expected_conditions as EC
 def find_toast(self, toast_message):
         # 判断toast信息
         try:
-            android_caps.wd = WebDriverWait(self.driver, 10)\
+            android_caps.self = WebDriverWait(self.driver, 10)\
                 .until(EC.presence_of_element_located((By.PARTIAL_LINK_TEXT, toast_message)))
             return True
         except:

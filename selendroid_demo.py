@@ -21,4 +21,4 @@ desired_caps['platformVersion'] = '5.1'
 desired_caps['automationName'] = 'Selendroid'  # Selendroid模式
 desired_caps['appPackage'] = 'com.immomo.momo'  # 被测App的包名
 desired_caps['appActivity'] = 'com.immomo.momo.android.activity.WelcomeActivity'  # 启动时的Activity
-wd = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
+self = webdriver.Remote('http://localhost:4723/self/hub', desired_caps)
