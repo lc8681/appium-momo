@@ -1,14 +1,9 @@
 # -*- coding: utf-8 -*-
-# python学习，加油！
 import time
-import unittest
-
-import HTMLTestRunner
-
 import android_caps
+import unittest
+import HTMLTestRunner
 import login
-import quanzi_index
-
 
 # 测试用例集合
 class LoginTest(unittest.TestCase):
@@ -17,9 +12,6 @@ class LoginTest(unittest.TestCase):
 
     def test_login(self):
         login
-
-    def test_quanzi_index(self):
-        quanzi_index
 
 
 if __name__ == '__main__':
